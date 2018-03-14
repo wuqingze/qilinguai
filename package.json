@@ -1,0 +1,27 @@
+{
+  "name": "qilinguai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "boostrap": "^2.0.0",
+    "grunt": "latest",
+    "grunt-contrib-clean": "latest",
+    "grunt-contrib-concat": "latest",
+    "grunt-contrib-uglify": "latest",
+    "socket.io": "^2.0.4"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.15.2",
+    "mysql": "^2.15.0",
+    "node-static": "0.7.10",
+    "save": "^2.3.1",
+    "socket.io": "^2.0.4"
+  }
+}
