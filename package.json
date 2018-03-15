@@ -9,12 +9,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "boostrap": "^2.0.0",
     "grunt": "latest",
     "grunt-contrib-clean": "latest",
     "grunt-contrib-concat": "latest",
     "grunt-contrib-uglify": "latest",
-    "socket.io": "^2.0.4"
+    "node-msoffice-pdf": "^0.0.7"
   },
   "dependencies": {
     "body-parser": "^1.18.2",

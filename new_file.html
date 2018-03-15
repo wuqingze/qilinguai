@@ -1,0 +1,84 @@
+<div ng-controller="new_file_controller">
+    <div class="row clearfix">
+        <div class="col-md-2 column" style="background:rgb(248, 248, 248)" id="chose_panel">
+            <ul class="nav nav-pills nav-stacked">
+                <li class="{{empty_class}}" id="empty_canvas" ng-click="empty_panel_click()"><a>empty</a></li>
+                <li class="{{old_class}}" id="old_canvas" ng-click="old_panel_click()"><a>old file</a></li>
+                <li class="{{image_class}}" id="image_canvas" ng-click="image_panel_click()"><a>add image</a></li>
+                <li class="{{friend_class}}" id="call_friend" ng-click="friend_panel_click()"><a>call friend</a></li>
+                <li class="{{bin_class}}" id="recycle_bin" ng-click="bin_panel_click()"><a>recycle bin</a></li>
+            </ul>
+        </div>
+        <div class="col-md-10 column" id="display_panel">
+            
+            <drawcanvas ng-hide="empty_panel_hide" ng-repeat="canvas in empty_canvas" ng-controller="empty_file_controller"></drawcanvas>
+
+            <div ng-hide="old_file_panel_hide" ng-controller="old_file_controller">
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="search_value"/>
+                    </div> <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+                <filebox></filebox>
+                <div id="draw_panel"></div>
+            </div>
+            
+            <div  ng-hide="image_panel_hide">
+                <div class="jumbotron" ng-hide="image_select_hide">
+                    <div class="container">
+                        <div class="row clearfix">
+                            <div class="col-md-4 column">
+                            </div>
+                            <div class="col-md-4 column">
+                                <div class="alert alert-success alert-dismissable" style="background-color: rgb(248,248,248)">
+                                    <form role="form" class="navbar-form">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="name" 
+                                                    placeholder="请输入名称">
+                                        </div><br/><br/>
+                                            <input style="margin:0px 0px 0px 50px" type="file" id="inputfile" class="form-check-input" fileread="image_file">
+                                        <br>
+                                        <button ng-click="image_canvas_click()" style="margin:0px 0px 0px 50px" type="submit" class="btn btn-default">提交</button>
+                                    </form>    
+                                </div>
+                                
+                            </div>
+                            <div class="col-md-4 column">
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div ng-repeat="canvas in image_canvas">
+                    <drawcanvas ng-controller="save_image_file_controller"></drawcanvas>
+                </div>
+            </div>
+
+            <div ng-hide="friend_panel_hide" ng-controller="friend_controller">
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="search_value"/>
+                    </div> <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            
+                <friendbox></friendbox>
+            </div>
+            
+            <div  ng-hide="bin_panel_hide" ng-controller="new_file_bin_controller">
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="search_value"/>
+                    </div> <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+                <binbox></binbox>
+            </div>
+
+            <div>
+                <!-- <p ng-repeat="file_box in file_box_canvas">djfdfadflajf</p> -->
+                <drawcanvas ng-repeat="file_box in file_box_canvas"></drawcanvas>
+            </div>
+    </div>
+    <!-- <filebox ng-controller="file_box_controller"></filebox> -->
+    <!-- <filebox ng-controller="file_box_controller_01"></filebox> -->
+</div>
+    
