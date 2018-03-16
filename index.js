@@ -58,3 +58,17 @@ io.on('connection', function(socket){
 http.listen(8080, function(){
     console.log('listening on *:8080');
   });
+
+
+function mysqlconnection(){
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+    host: 'www.muedu.org',
+    user: 'deit-2015',
+    password: 'deit@2015!',
+    database:'project_2015_5'
+});
+connection.connect();
+return connection;
+// connection.end();
+}

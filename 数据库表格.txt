@@ -1,0 +1,24 @@
+mysql> create table teacher(t_id varchar(18) primary key,
+    -> name varchar(48),
+    -> password varchar(48));
+Query OK, 0 rows affected (0.20 sec)
+
+
+mysql> create table honor(
+    -> h_id varchar(48) primary key,
+    -> p_name varchar(1024),
+    -> s_id varchar(48),
+    -> theme varchar(48),
+    -> introduction varchar(1024),
+    -> explanation longtext,
+    -> checked bool,
+    -> t_id varchar(48),
+    -> file_id int,
+    -> time date);
+
+mysql> create table student(
+    -> s_id varchar(48) primary key,
+    -> password varchar(48),
+    -> name varchar(48)
+    -> );
+Query OK, 0 rows affected (0.16 sec)

@@ -13,6 +13,7 @@
     "grunt-contrib-clean": "latest",
     "grunt-contrib-concat": "latest",
     "grunt-contrib-uglify": "latest",
+    "mysql": "^2.15.0",
     "node-msoffice-pdf": "^0.0.7"
   },
   "dependencies": {
