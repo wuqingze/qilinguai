@@ -1,6 +1,9 @@
 
 'use strict';
 
+var sql = require("./sql.js");
+var database = require('./database.js');
+
 var os = require('os');
 var nodeStatic = require('node-static');
 var fs = require('fs');
@@ -34,11 +37,23 @@ app.get('/', function(req, res){
 });
 
 io.on('connection', function(socket){
-    console.log('a user connected');
+    console.log('a user connected '+socket.id);
 
     socket.on("login",function(msg){
-        console.log(msg['cookie']);
-        socket.emit("login",{cookie:'hello world',login:true});
+        database.connection().query(sql.login(msg['username'],msg['password']),function(err, rows, fields) {
+            if(err){
+                socket.emit('login',failResult);
+            }else{
+                var count = rows.length;
+                if(count == 0){
+                    socket.emit('login',{result:count});
+                }else if(count == 1){
+                    loginUser[socket.id] = rows[0];
+                    socket.emit('login',{result:count,cookie:socket.id});
+                }
+            }
+        });
+        // socket.emit("login",{cookie:'hello world',login:true});
     });
 
 
@@ -54,7 +69,7 @@ io.on('connection', function(socket){
       console.log('user disconnected');
     });
 });
-      
+
 http.listen(8080, function(){
     console.log('listening on *:8080');
   });
