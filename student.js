@@ -1,21 +1,5 @@
 var socket = io.connect();
 
-
-// socket.emit('access',{cookie:getCookie('qilinguai')});
-// socket.on('access', function(msg){
-//     // socket.disconnect();
-//     if(msg['result']){
-//     }else{
-//         document.location.href = './login.html';
-//     }
-// });
-
-// socket.on('honor_table',function(msg){
-//     alert(msg);
-//     // $scope.honors = msg['shjxx'];
-//     // $scope.$apply();
-// });
-
 var app = angular.module('studentAPP', []);
 app.directive('honortable', function(){
     return {
@@ -29,7 +13,8 @@ var honor_classic = {"sxchzh":"思想成长" ,"shjxx":"实践学习" ,"zhygy":"�
 
 app.controller('studentController',function($scope) {
     $scope.honortables = {sxchzh:[{p_name:"name",theme:"theme",introduction:"intr",checked:1,time:"djfk"},],shjxx:[{p_name:"name",theme:"theme",introduction:"intr",checked:1,time:"djfk"},{p_name:"name",theme:"theme",introduction:"intr",checked:1,time:"djfk"},],zhygy:[{p_name:"name",theme:"theme",introduction:"intr",checked:1,time:"djfk"},{p_name:"name",theme:"theme",introduction:"intr",checked:1,time:"djfk"},{p_name:"name",theme:"theme",introduction:"intr",checked:1,time:"djfk"},],xshky:[],wthd:[],gzll:[],kjzhsh:[]};
-    
+    $scope.table_show = true;
+
     socket.emit('honor_table',{cookie:getCookie('qilinguai')});
     socket.on('honor_table',function(msg){
         $scope.$broadcast("parentChange", msg);
@@ -37,19 +22,8 @@ app.controller('studentController',function($scope) {
 
     $scope.submmit = function(){
         $scope.table_show = false;
+        // $scope.$apply();
     }
-
-    // $scope.outernam = "hell";
-    // $scope.test = [1,2];
-    // // $scope.honors = {"sxchzh":"思想成长" ,"shjxx":"实践学习" ,"zhygy":"志愿公益" ,"xshky":"学术科研" ,"wthd":"文体活动" ,"gzll":"工作履历" ,"kjzhsh":"考级证书"};
-    // $scope.tables = ["sxchController test","hello wolrd",[{p_name:"dfa",theme:"afa",introduction:"afaf",checked:0,time:"adfa"}]];
-    // $scope.honors = [{p_name:"name",theme:"theme",introduction:"intr",checked:1,time:"djfk"},{p_name:"af",theme:"fdf",introduction:"dfdf",checked:1,time:"dfaf"},{p_name:"dfa",theme:"afa",introduction:"afaf",checked:0,time:"adfa"}];
-    // $scope.inputtext = "jjjj";
-    // window.setInterval(function(){
-    //     $scope.$broadcast("parentChange", Math.random());
-    // },1000);
-    // window.setInterval(function(){$scope.tables[0]=[Math.random()];$scope.$apply();console.log(Math.random())},500);
-    // window.setInterval(function(){$scope.inputtext = Math.random();$scope.$apply();console.log(Math.random())},500);
 });
 
 app.controller('sxchzhController', function($scope){$scope.$on('parentChange',function(e,m){$scope.honors=m['sxchzh'];$scope.$apply()})});
