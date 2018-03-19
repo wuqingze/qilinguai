@@ -1,5 +1,5 @@
 <div>
-        <table class="table">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>
@@ -29,7 +29,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="honor in honors">
+                <tr ng-repeat="honor in honors" class="{{trclass}}" ng-mouseenter="trclass='warning'" ng-mouseleave="trclass=''">
                     <td>
                         {{honor.s_id}}
                     </td>
@@ -50,9 +50,6 @@
                     </td>
                     <td>
                         wenjian
-                    </td>
-                    <td>
-                        {{honor.time}}
                     </td>
                     <td>
                         <a href="">撤销</a>

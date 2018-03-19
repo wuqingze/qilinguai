@@ -121,6 +121,41 @@ io.on('connection', function(socket){
         // socket.emit('honor_table',successResult);
     });
 
+    socket.on('not_checked_honor',function(msg,fn){
+        database.connection().query(sql.not_checked_honor,function(err,rows,fields){
+            fn(rows);
+        });
+        
+    });
+
+    socket.on('checked_honor',(msg,fn)=>{
+        database.connection().query(sql.checked_honor,(err,rows,fields)=>{
+            fn(rows);
+        });
+    });
+
+    socket.on('pass_honor',function(msg,fn){
+        database.connection().query(sql.pass_honor(msg.h_id),function(err,results,fields){
+            // console.log(err);
+            // console.log(results);
+            // console.log(fields);
+            // console.log('---------------------------------------');
+            fn(results);
+        });
+    });
+
+    socket.on('deny_honor',function(msg,fn){
+        database.connection().query(sql.deny_honor(msg.h_id),function(err,results,fields){
+            fn(results);
+        });
+    });
+
+    socket.on('cancel_honor',function(msg,fn){
+        database.connection().query(sql.cancel_honor(msg.h_id),function(err,results,fields){
+            fn(results);
+        });
+    });
+
     socket.on('disconnect', function(){
       console.log('user disconnected');
     });

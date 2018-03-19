@@ -1,5 +1,5 @@
 <div>
-        <table class="table">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>
@@ -29,7 +29,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="honor in honors">
+                <tr ng-repeat="honor in honors" class="{{trclass}}" ng-mouseenter="trclass='warning'" ng-mouseleave="trclass=''" ng-init="showtr=true" ng-if="honor.checked != 1024">
                     <td>
                         {{honor.s_id}}
                     </td>
@@ -49,13 +49,11 @@
                         {{honor.time}}
                     </td>
                     <td>
-                        wenjian
+                        wenjian{{honor.h_id}}
                     </td>
                     <td>
-                        {{honor.time}}
-                    </td>
-                    <td>
-                        <a href="">通过</a>&nbsp;|&nbsp;<a>拒绝</a>
+                        <div ng-show="honor.checked==1"> <span class="glyphicons glyphicons-check" style="color:red">审核通过</span></div>
+                        <div ng-if="honor.checked==0"> <a ng-click="pass(honor.h_id,honor)">通过</a>&nbsp;|&nbsp;<a>拒绝</a></div>
                     </td>
                 </tr>
             </tbody>

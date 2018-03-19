@@ -10,12 +10,18 @@
         <link rel="stylesheet" href="css//bootstrap.min.css" />
         <script src="/socket.io/socket.io.js"></script>
         <script>
+            function getCookie(name) {
+            var value = "; " + document.cookie;
+            var parts = value.split("; " + name + "=");
+            if (parts.length == 2) return parts.pop().split(";").shift();
+            }   
+
             var socket = io.connect();
             socket.emit('access',{cookie:getCookie('qilinguai')});
             socket.on('access', function(msg){
-                socket.disconnect();
                 if(msg['result']){
                 }else{
+                    socket.disconnect();
                     document.location.href = './login.html';
                 }
             });
@@ -23,161 +29,6 @@
     </head>
     <body  ng-app="studentAPP" ng-controller="studentController">
         <div ng-include="'navigator.html'"></div>
-        <div class="row clearfix">
-            <div class="col-md-12 column">
-                <div class="tabbable " id="tabs-89396">
-                    <div class="row clearfix">
-                        <div class="col-md-12 column">
-                            <div class="row clearfix">
-                                <div class="col-md-2 column" >
-                                    <ul class="nav nav-pills nav-stacked" style="background:#f6f6f6;height:100%">
-                                            <li >
-                                                    <a href="#panel-sxchzh" data-toggle="tab">思想成长 </a>
-                                            </li>
-                                            <li class="active">
-                                                    <a href="#panel-shjxx" data-toggle="tab">实践学习 </a>
-                                            </li>
-                                            <li>
-                                                    <a href="#panel-zhygy" data-toggle="tab">志愿公益 </a>
-                                            </li>
-                                            <li>
-                                                    <a href="#panel-xshky" data-toggle="tab">学术科研 </a>
-                                            </li>
-                                            <li>
-                                                    <a href="#panel-wthd" data-toggle="tab">文体活动 </a>
-                                            </li>
-                                            <li>
-                                                    <a href="#panel-gzll" data-toggle="tab">工作履历 </a>
-                                            </li>
-                                            <li>
-                                                    <a href="#panel-kjzhsh" data-toggle="tab">考级证书 </a>
-                                            </li>
-                                            <li>
-                                                    <a href="#" data-togg="tab">快速通道</a>
-                                            </li>
-                                        </ul>
-                                </div>
-                                <div class="col-md-10 column">
-                                    <!-- <div style="background:#f6f6f6;width:100%;height:100%"></div> -->
-                                    <!-- <embed src="./_jj.pdf" width="100%" height="100%">  -->
-                                    <div hidden="true">
-                                        <div><h3>主题</h3><p>node_modules/node-msoffice-pdf/node_modules/edge/tools/download.cs
-                                               </p></div>
-                                        <div><h3>简介</h3><p> create mode 100644 node_modules/node-msoffice-pdf/node_modules/edge/tools/download.js
-                                               </p></div>
-                                        <div><h3>详细说明</h3><p> create mode 100644 node_modules/node-msoffice-pdf/node_modules/edge/tools/install.js
-                                                create mode 100644 node_modules/node-msoffice-pdf/node_modules/edge/tools/nuget/edge.nuspec
-                                                create mode 100644 node_modules/node-msoffice-pdf/node_modules/edge/tools/nuget/install.ps1
-                                                create mode 100644 node_modules/node-msoffice-pdf/node_modules/edge/tools/repl.cs
-                                                create mode 100644 node_modules/node-msoffice-pdf/node_modules/edge/tools/runJsHint.js
-                                                create mode 100644 node_modules/node-msoffice-pdf/node_modules/edge/tools/test.js
-                                                create mode 100644 node_modules/node-msoffice-pdf/node_modules/edge/tools/unzip.cs
-                                                create mode 100644 node_modules/node-msoffice-pdf/node_modules/edge/tools/unzip.vbs
-                                                create mode 100644 node</p></div>
-                                        <div><h3>获奖时间</h3><p>32424235252</p></div>
-                                        <div><h3>证明材料</h3><embed src="./_jj.pdf" style="width:75%; height:100%"> </div>
-                                    </div>
-                                    <embed src="./jj.doc" width="100%" height="100%" hidden="true"> 
-                                    <div style="background:#f6f6f6;height:100%" hidden="true">
-                                        <div>
-                                            <form class="form-horizontal" role="form">
-                                                <div class="form-group">
-                                                    <label for="firstname" class="col-sm-2 control-label">主题</label>
-                                                    <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="firstname">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="lastname" class="col-sm-2 control-label">简介</label>
-                                                    <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="lastname">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="lastname" class="col-sm-2 control-label">详细介绍</label>
-                                                    <div class="col-sm-10">
-                                                        <textarea class="form-control" rows="3" style="height:367px"></textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="lastname" class="col-sm-2 control-label">获得时间</label>
-                                                    <div class="col-sm-10">
-                                                        <div class="col-sm-6">
-                                                            <label for="name">年</label>
-                                                            <select class="form-control">
-                                                                <option>1</option>
-                                                                <option>2</option>
-                                                                <option>3</option>
-                                                                <option>4</option>
-                                                                <option>5</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <label for="name">月</label>
-                                                            <select class="form-control">
-                                                                <option>1</option>
-                                                                <option>2</option>
-                                                                <option>3</option>
-                                                                <option>4</option>
-                                                                <option>5</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="lastname" class="col-sm-2 control-label">证明材料</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="file" id="inputfile">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="col-sm-10"></div>
-                                                    <div class="col-sm-1">
-                                                        <button type="submit" class="btn btn-default">提交</button>
-                                                    </div>
-                                                    <div class="col-sm-1">
-                                                      <button type="submit" class="btn btn-default">取消</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <!-- hidden="true" -->
-                                    <div class="tab-content" >
-                                            <div>
-                                                <button class="btn btn-primary" style="float:  right;">上传</button>
-                                            </div>
-                                            <div ng-include="'honor_table.html'" ng-init="honors=honortables['sxchzh']" class="tab-pane" id="panel-sxchzh" ng-controller="sxchzhController"></div>
-                                            <div ng-include="'honor_table.html'" ng-init="honors=honortables['shjxx']" class="tab-pane active" id="panel-shjxx" ng-controller="shjxxController"></div>
-                                            <div ng-include="'honor_table.html'" ng-init="honors=honortables['zhygy']" class="tab-pane" id="panel-zhygy" ng-controller="zhygyController"></div>
-                                            <div ng-include="'honor_table.html'" ng-init="honors=honortables['xshky']" class="tab-pane" id="panel-xshky" ng-controller="xshkyController"></div>
-                                            <div ng-include="'honor_table.html'" ng-init="honors=honortables['wthd']" class="tab-pane" id="panel-wthd" ng-controller="wthdController"></div>
-                                            <div ng-include="'honor_table.html'" ng-init="honors=honortables['gzll']" class="tab-pane" id="panel-gzll" ng-controller="gzllController"></div>
-                                            <div ng-include="'honor_table.html'" ng-init="honors=honortables['kjzhsh']" class="tab-pane" id="panel-kjzhsh" ng-controller="kjzhshController"></div>
-                                            <!-- <div ng-include="'honor_table.html'" ng-init="test_=test[0]" ng-controller="jj"></div>
-                                            <div ng-include="'honor_table.html'" ng-init="test_=test[1]"></div> -->
-                                            <!-- <honortable class="tab-pane" id="panel-sxchzh" ng-init="test_=test[0]" ng-controller="jj"></honortable> -->
-                                            <!-- <honortable class="tab-pane active" id="panel-shjxx" ng-init="test_=test[1]"></honortable> -->
-                                            <!-- <honortable class="tab-pane" id="panel-sxchzh" ng-controller="sxchzhController" honors="tables[2]"></honortable> -->
-                                            <!-- <honortable class="tab-pane active" id="panel-shjxx" ng-init="honors=tables[2];jj=inputtext" ng-controller="shjxxController"></honortable> -->
-                                            <!-- <honortable class="tab-pane" id="panel-zhygy" ng-controller="zhygyController"></honortable>
-                                            <honortable class="tab-pane" id="panel-xshky" ng-controller="xshkyController"></honortable>
-                                            <honortable class="tab-pane" id="panel-wthd" ng-controller="wthdController"></honortable>
-                                            <honortable class="tab-pane" id="panel-gzll" ng-controller="gzllController"></honortable>
-                                            <honortable class="tab-pane" id="panel-kjzhsh" ng-controller="kjzhshController"></honortable> -->
-                                            <div class="tab-pane" id="panel-439630">
-                                                <table class="table">
-                                                    
-                                                </table>
-                                            </div>
-                                        </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </body>
     <script src="./student.js"></script>
 </html>

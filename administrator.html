@@ -17,15 +17,15 @@
             var socket = io.connect();
             socket.emit('access',{cookie:getCookie('qilinguai_teacher')});
             socket.on('access', function(msg){
-                socket.disconnect();
                 if(msg['result']){
                 }else{
+                    socket.disconnect();
                     document.location.href = './teacher_login.html';
                 }
             });
         </script>
     </head>
-    <body ng-app="adminapp" ng-controller="maincontroller">
+    <body ng-app="admin_app" ng-controller="main_controller">
         <div ng-include="'./navigator.html'"></div>
         <div class="tabbable" id="tabs-321675">
             <ul class="nav nav-tabs">

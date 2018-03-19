@@ -35,6 +35,9 @@ app.controller('studentController',function($scope) {
         $scope.$broadcast("parentChange", msg);
     });
 
+    $scope.submmit = function(){
+        $scope.table_show = false;
+    }
 
     // $scope.outernam = "hell";
     // $scope.test = [1,2];
