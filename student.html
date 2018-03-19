@@ -9,6 +9,17 @@
         <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
         <link rel="stylesheet" href="css//bootstrap.min.css" />
         <script src="/socket.io/socket.io.js"></script>
+        <script>
+            var socket = io.connect();
+            socket.emit('access',{cookie:getCookie('qilinguai')});
+            socket.on('access', function(msg){
+                socket.disconnect();
+                if(msg['result']){
+                }else{
+                    document.location.href = './login.html';
+                }
+            });
+        </script>
     </head>
     <body  ng-app="studentAPP" ng-controller="studentController">
         <div ng-include="'navigator.html'"></div>
@@ -136,13 +147,24 @@
                                             <div>
                                                 <button class="btn btn-primary" style="float:  right;">上传</button>
                                             </div>
-                                            <honortable class="tab-pane" id="panel-sxchzh"></honortable>
-                                            <honortable class="tab-pane active" id="panel-shjxx"></honortable>
-                                            <honortable class="tab-pane" id="panel-zhygy"></honortable>
-                                            <honortable class="tab-pane" id="panel-xshky"></honortable>
-                                            <honortable class="tab-pane" id="panel-wthd"></honortable>
-                                            <honortable class="tab-pane" id="panel-gzll"></honortable>
-                                            <honortable class="tab-pane" id="panel-kjzhsh"></honortable>
+                                            <div ng-include="'honor_table.html'" ng-init="honors=honortables['sxchzh']" class="tab-pane" id="panel-sxchzh" ng-controller="sxchzhController"></div>
+                                            <div ng-include="'honor_table.html'" ng-init="honors=honortables['shjxx']" class="tab-pane active" id="panel-shjxx" ng-controller="shjxxController"></div>
+                                            <div ng-include="'honor_table.html'" ng-init="honors=honortables['zhygy']" class="tab-pane" id="panel-zhygy" ng-controller="zhygyController"></div>
+                                            <div ng-include="'honor_table.html'" ng-init="honors=honortables['xshky']" class="tab-pane" id="panel-xshky" ng-controller="xshkyController"></div>
+                                            <div ng-include="'honor_table.html'" ng-init="honors=honortables['wthd']" class="tab-pane" id="panel-wthd" ng-controller="wthdController"></div>
+                                            <div ng-include="'honor_table.html'" ng-init="honors=honortables['gzll']" class="tab-pane" id="panel-gzll" ng-controller="gzllController"></div>
+                                            <div ng-include="'honor_table.html'" ng-init="honors=honortables['kjzhsh']" class="tab-pane" id="panel-kjzhsh" ng-controller="kjzhshController"></div>
+                                            <!-- <div ng-include="'honor_table.html'" ng-init="test_=test[0]" ng-controller="jj"></div>
+                                            <div ng-include="'honor_table.html'" ng-init="test_=test[1]"></div> -->
+                                            <!-- <honortable class="tab-pane" id="panel-sxchzh" ng-init="test_=test[0]" ng-controller="jj"></honortable> -->
+                                            <!-- <honortable class="tab-pane active" id="panel-shjxx" ng-init="test_=test[1]"></honortable> -->
+                                            <!-- <honortable class="tab-pane" id="panel-sxchzh" ng-controller="sxchzhController" honors="tables[2]"></honortable> -->
+                                            <!-- <honortable class="tab-pane active" id="panel-shjxx" ng-init="honors=tables[2];jj=inputtext" ng-controller="shjxxController"></honortable> -->
+                                            <!-- <honortable class="tab-pane" id="panel-zhygy" ng-controller="zhygyController"></honortable>
+                                            <honortable class="tab-pane" id="panel-xshky" ng-controller="xshkyController"></honortable>
+                                            <honortable class="tab-pane" id="panel-wthd" ng-controller="wthdController"></honortable>
+                                            <honortable class="tab-pane" id="panel-gzll" ng-controller="gzllController"></honortable>
+                                            <honortable class="tab-pane" id="panel-kjzhsh" ng-controller="kjzhshController"></honortable> -->
                                             <div class="tab-pane" id="panel-439630">
                                                 <table class="table">
                                                     

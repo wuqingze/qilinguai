@@ -14,7 +14,8 @@
     "grunt-contrib-concat": "latest",
     "grunt-contrib-uglify": "latest",
     "mysql": "^2.15.0",
-    "node-msoffice-pdf": "^0.0.7"
+    "node-msoffice-pdf": "^0.0.7",
+    "pdf-image": "^1.0.5"
   },
   "dependencies": {
     "body-parser": "^1.18.2",

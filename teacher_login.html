@@ -1,34 +1,36 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<link rel="stylesheet" href="css//bootstrap.min.css" />
-		<script type="text/javascript" src="js//jquery-3.1.1.min.js" ></script>
-		<script type="text/javascript" src="js//bootstrap.min.js"></script>
-		<title>login</title>
-		<style>
-		body{
-			  background:#fff url("images//loginBackground2.jpg") no-repeat;
-			  background-size: 100%;
-			}
-		</style>
-		<style type="text/css">
-			#loginPanel{
-				margin: 50px;
-			}
-		</style>
+        <meta http-equiv="pragma" content="no-cache">
+        <meta http-equiv="cache-control" content="no-cache">
+        <meta http-equiv="expires" content="0">    
+        <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+        <meta http-equiv="description" content="This is my page">
+        <link rel="stylesheet" href="./css/bootstrap.min.css" />
+        <script type="text/javascript" src="./js/jquery-3.1.1.min.js" ></script>
+        <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+        <script src="./js/angular.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <title>teacher login</title>
+        <style>
+        body{
+                background:#fff url("images//loginBackground2.jpg") no-repeat;
+                background-size: 100%;
+            }
+        </style>
+        <style type="text/css">
+            #loginPanel{
+                margin: 50px;
+            }
+        </style>
   </head>
-  <body >
-    <div  class="container">
+  <body ng-app="teacherloginapp">
+    <div class="container">
         <div class="row clearfix">
             <div class="col-md-12 column" id="loginPanel">
                 <div class="col-md-4"></div>
                 <div class="col-md-4"></div>
-                <div class="col-md-4" style="background-color:#EEEEEE;" >
+                <div class="col-md-4" style="background-color:#EEEEEE;" ng-controller="teacherlogincontroller">
                         <h1 class="page-header">
                             管理员登陆
                         </h1>
@@ -39,7 +41,7 @@
                                     用户名
                                 </label>
                                 <div class="col-md-9" >
-                                    <input type="text" class="form-control" name="username" placeholder="emeil/username"/>
+                                    <input type="text" class="form-control" ng-model="username" placeholder="emeil/username"/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -48,7 +50,12 @@
                                     密码
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="password" class="form-control" name="password" placeholder="password"/>
+                                    <input type="password" class="form-control" ng-model="password" placeholder="password"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <p style="color:red">{{login_result}}</p>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -64,7 +71,7 @@
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
                                     
-                                    <button type="submit" class="btn btn-primary">
+                                    <button ng-click="login()" class="btn btn-primary">
                                         登陆
                                     </button>
                                 </div>
@@ -75,4 +82,5 @@
         </div>
     </div>
   </body>
+  <script src="./teacher_login.js"></script>
 </html>

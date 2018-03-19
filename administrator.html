@@ -7,15 +7,25 @@
         <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
         <script>
-            $(function(){
-                if(false){
-                    document.location.href = "./login.html";
+            function getCookie(name) {
+                var value = "; " + document.cookie;
+                var parts = value.split("; " + name + "=");
+                if (parts.length == 2) return parts.pop().split(";").shift();
+            }
+            var socket = io.connect();
+            socket.emit('access',{cookie:getCookie('qilinguai_teacher')});
+            socket.on('access', function(msg){
+                socket.disconnect();
+                if(msg['result']){
+                }else{
+                    document.location.href = './teacher_login.html';
                 }
             });
         </script>
     </head>
-    <body ng-app="">
+    <body ng-app="adminapp" ng-controller="maincontroller">
         <div ng-include="'./navigator.html'"></div>
         <div class="tabbable" id="tabs-321675">
             <ul class="nav nav-tabs">
@@ -27,113 +37,14 @@
                 </li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane active" id="panel-861796">
-                    <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            学号
-                                        </th>
-                                        <th>
-                                            姓名
-                                        </th>
-                                        <th>
-                                            分类
-                                        </th>
-                                        <th>
-                                            主题
-                                        </th>
-                                        <th>
-                                            简介
-                                        </th>
-                                        <th>
-                                            预览文件
-                                        </th>
-                                        <th>
-                                            审核
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            1
-                                        </td>
-                                        <td>
-                                            TB - Monthly
-                                        </td>
-                                        <td>
-                                            01/04/2012
-                                        </td>
-                                        <td>
-                                            Default
-                                        </td>
-                                    </tr>
-                                    <tr class="success">
-                                        <td>
-                                            1
-                                        </td>
-                                        <td>
-                                            TB - Monthly
-                                        </td>
-                                        <td>
-                                            01/04/2012
-                                        </td>
-                                        <td>
-                                            Approved
-                                        </td>
-                                    </tr>
-                                    <tr class="error">
-                                        <td>
-                                            2
-                                        </td>
-                                        <td>
-                                            TB - Monthly
-                                        </td>
-                                        <td>
-                                            02/04/2012
-                                        </td>
-                                        <td>
-                                            Declined
-                                        </td>
-                                    </tr>
-                                    <tr class="warning">
-                                        <td>
-                                            3
-                                        </td>
-                                        <td>
-                                            TB - Monthly
-                                        </td>
-                                        <td>
-                                            03/04/2012
-                                        </td>
-                                        <td>
-                                            Pending
-                                        </td>
-                                    </tr>
-                                    <tr class="info">
-                                        <td>
-                                            4
-                                        </td>
-                                        <td>
-                                            TB - Monthly
-                                        </td>
-                                        <td>
-                                            04/04/2012
-                                        </td>
-                                        <td>
-                                            Call in to confirm
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                <div class="tab-pane active" id="panel-861796" ng-controller="not_checked_controller">
+                    <div ng-include="'checked_table.html'" ng-init="honors=[{'s_id':12},{'s_id':12},{'s_id':12},]"></div>                    
                 </div>
-                <div class="tab-pane" id="panel-303278">
-                    <p>
-                        Howdy, I'm in Section 2.
-                    </p>
+                <div class="tab-pane" id="panel-303278" ng-controller="checked_controller">
+                    <div ng-include="'checked_table1.html'" ng-init="honors=[{'s_id':12},{'s_id':12},{'s_id':12},]"></div>
                 </div>
             </div>
         </div>
     </body>
+    <script src="./admin.js"></script>
 </html>
