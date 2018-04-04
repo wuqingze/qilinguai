@@ -19,5 +19,8 @@ module.exports = {
     },
     cancel_honor: function(h_id){
         return "update honor set checked=0 where h_id='"+h_id+"'";
+    },
+    insert_honor: function(h_id,p_name,s_id,theme,introduction,explanation,checked,file_id,time){
+        return "insert into honor(h_id,p_name,s_id,theme,introduction,explanation,checked,file_id,time) values('"+h_id+"','"+p_name+"','"+s_id+"','"+theme+"','"+introduction+"','"+explanation+"','"+checked+"','"+file_id+"','"+time+"')";
     }
 }

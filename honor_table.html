@@ -1,5 +1,5 @@
 <div>
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>
@@ -23,7 +23,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="honor in honors" class="{{(honor.checked==1)?'warning':'active'}}">
+                <!-- class="{{(honor.checked==1)?'warning':'active'}}" -->
+            <tr ng-repeat="honor in honors">  
                 <td>
                     {{honor.p_name}}
                 </td>
@@ -37,7 +38,7 @@
                     {{(honor.checked==1)?"已审核":"未审核"}}
                 </td>
                 <td>
-                    wenjian
+                    <a href="">文件</a>
                 </td>
                 <td>
                     {{honor.time}}

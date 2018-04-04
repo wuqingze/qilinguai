@@ -9,11 +9,14 @@ app.directive('honortable', function(){
     }
 });
 
-var honor_classic = {"sxchzh":"思想成长" ,"shjxx":"实践学习" ,"zhygy":"志愿公益" ,"xshky":"学术科研" ,"wthd":"文体活动" ,"gzll":"工作履历" ,"kjzhsh":"考级证书"};
+var honor_classificatio = {"sxchzh":"思想成长" ,"shjxx":"实践学习" ,"zhygy":"志愿公益" ,"xshky":"学术科研" ,"wthd":"文体活动" ,"gzll":"工作履历" ,"kjzhsh":"考级证书"};
 
 app.controller('studentController',function($scope) {
     $scope.honortables = {sxchzh:[{p_name:"name",theme:"theme",introduction:"intr",checked:1,time:"djfk"},],shjxx:[{p_name:"name",theme:"theme",introduction:"intr",checked:1,time:"djfk"},{p_name:"name",theme:"theme",introduction:"intr",checked:1,time:"djfk"},],zhygy:[{p_name:"name",theme:"theme",introduction:"intr",checked:1,time:"djfk"},{p_name:"name",theme:"theme",introduction:"intr",checked:1,time:"djfk"},{p_name:"name",theme:"theme",introduction:"intr",checked:1,time:"djfk"},],xshky:[],wthd:[],gzll:[],kjzhsh:[]};
+    $scope.honor_classification = ["思想成长" ,"实践学习" ,"志愿公益" ,"学术科研" ,"文体活动" ,"工作履历" ,"考级证书"];
     $scope.table_show = true;
+    $scope.detail_show = false;
+    $scope.submit_show = false; 
 
     socket.emit('honor_table',{cookie:getCookie('qilinguai')});
     socket.on('honor_table',function(msg){
@@ -22,7 +25,19 @@ app.controller('studentController',function($scope) {
 
     $scope.submmit = function(){
         $scope.table_show = false;
+        // $scope.detail_show = true;
+        $scope.submit_show = true;
+
         // $scope.$apply();
+    };
+
+    $scope.submit_back = function(){
+        $scope.table_show = true;
+        $scope.submit_show = false;
+    };
+
+    $scope.submit_honor = function(theme,introduction,p_name,explanation){
+        
     }
 });
 

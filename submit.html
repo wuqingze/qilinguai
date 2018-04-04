@@ -1,64 +1,56 @@
-<div style="background:#f6f6f6;height:100%">
-    <div>
-        <form class="form-horizontal" role="form">
-            <div class="form-group">
-                <label for="firstname" class="col-sm-2 control-label">主题</label>
-                <div class="col-sm-10">
-                <input type="text" class="form-control" id="firstname">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="lastname" class="col-sm-2 control-label">简介</label>
-                <div class="col-sm-10">
-                <input type="text" class="form-control" id="lastname">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="lastname" class="col-sm-2 control-label">详细介绍</label>
-                <div class="col-sm-10">
-                    <textarea class="form-control" rows="3" style="height:367px"></textarea>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="lastname" class="col-sm-2 control-label">获得时间</label>
-                <div class="col-sm-10">
-                    <div class="col-sm-6">
-                        <label for="name">年</label>
-                        <select class="form-control">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-6">
-                        <label for="name">月</label>
-                        <select class="form-control">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
+<div class="container-fluid" ng-show="submit_show">
+    <div class="row">
+        <button class="btn btn-default" ng-click="submit_back()"><span class="glyphicon glyphicon-arrow-left"></span>返回</button>
+    </div>
+    <div  class="row">
+        
+        <div class="col-md-10">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="firstname" class="col-sm-2 control-label">主题</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" ng-model="theme">
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="lastname" class="col-sm-2 control-label">证明材料</label>
-                <div class="col-sm-10">
-                    <input type="file" id="inputfile">
+                <div class="form-group">
+                    <label for="lastname" class="col-sm-2 control-label">简介</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" ng-model="introduction">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-10"></div>
-                <div class="col-sm-1">
-                    <button type="submit" class="btn btn-default">提交</button>
+                <div class="form-group">
+                    <label for="lastname" class="col-sm-2 control-label">类别</label>
+                    <div class="col-sm-2">
+                        <select class="form-control" ng-init="p_name = honor_classification[0]" ng-model="p_name" ng-options="honor for honor in honor_classification">
+                        </select>
+                        <!-- <select class="form-control" ng-model="p_name">
+                            <option ng-repeat="honor in honor_classification">{{honor}}</option>
+                        </select> -->
+                    </div>
                 </div>
-                <div class="col-sm-1">
-                    <button type="submit" class="btn btn-default">取消</button>
+
+                <div class="form-group">
+                    <label for="lastname" class="col-sm-2 control-label">详细介绍</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" rows="3" style="height:367px" ng-model="explanation"></textarea>
+                    </div>
                 </div>
-            </div>
-        </form>
+                <div class="form-group">
+                    <label for="lastname" class="col-sm-2 control-label">证明材料</label>
+                    <div class="col-sm-10">
+                        <input type="file" id="inputfile">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10"></div>
+                    <div class="col-sm-1">
+                        <button class="btn btn-default" ng-click="submit_honor(theme,introduction,p_name,explanation)">提交</button>
+                    </div>
+                    <div class="col-sm-1">
+                        <button type="submit" class="btn btn-default">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

@@ -156,6 +156,19 @@ io.on('connection', function(socket){
         });
     });
 
+    socket.on('insert_honor',function(msg,fn){
+        var h_id = Math.random().toString();
+        var s_id = loginUser[msg['cookie']]['s_id'];
+        var p_name = msg.p_name;
+        var theme = msg.theme;
+        var introduction = msg.introduction;
+        var explanation = msg.explanation;
+        var checked = 0;
+        
+        database.connection().query(sql.insert_honor(),function(err,results,fields){
+
+        });
+    });
     socket.on('disconnect', function(){
       console.log('user disconnected');
     });
